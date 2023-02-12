@@ -1,6 +1,8 @@
 import React from 'react';
 import { useRef, useEffect, useState } from 'react';
 
+const barWidth = 20;
+
 export default function TemperatureChart({ day }) {
   const canvasRef = useRef(null);
 
@@ -29,7 +31,7 @@ export default function TemperatureChart({ day }) {
       // console.log(time);
       // console.log(value);
 
-      const timeOnScaleOf0To100 = findTimeOnScaleOf1To100(time);
+      const timeOnScaleOf0To100 = findTimeOnScaleOfCanvasWidth(time, canvas);
       // console.log(timeOnScaleOf0To100);
     });
   }, []);
@@ -44,17 +46,20 @@ function fitToContainer(canvas) {
   canvas.height = canvas.offsetHeight;
 }
 
-function findTimeOnScaleOf1To100(time) {
+function findTimeOnScaleOfCanvasWidth(time, canvas) {
   const minutesIn24Hours = 60 * 24;
+  const width = canvas.width;
 
   const splitTime = time.split(':');
   const hours = parseInt(splitTime[0]);
   const minutes = parseInt(splitTime[1]);
   const minutesInThisDay = hours * 60 + minutes;
-  console.log(minutesInThisDay);
   const onScaleOf100 = (minutesInThisDay / minutesIn24Hours) * 100;
-  console.log(onScaleOf100);
-  if (onScaleOf100 > 100) throw new Error('Wrong time');
+  if (onScaleOf100 > 100) throw new Error('Wrong time. Over 24 hours');
+
+  const multiplicand = onScaleOf100 / 100;
+  const onScaleOfCanvasWidth = (width - barWidth) * multiplicand;
+  console.log(onScaleOfCanvasWidth);
 }
 
 const months = [
