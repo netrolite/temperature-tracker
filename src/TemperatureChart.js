@@ -26,10 +26,11 @@ export default function TemperatureChart({ day }) {
     temperatures.forEach((temperature) => {
       const time = temperature.time;
       const value = temperature.value;
-      console.log(time);
-      console.log(value);
+      // console.log(time);
+      // console.log(value);
 
       const timeOnScaleOf0To100 = findTimeOnScaleOf1To100(time);
+      // console.log(timeOnScaleOf0To100);
     });
   }, []);
 
@@ -44,7 +45,15 @@ function fitToContainer(canvas) {
 }
 
 function findTimeOnScaleOf1To100(time) {
-  const minutesInADay = 60 * 24;
+  const minutesIn24Hours = 60 * 24;
+
+  const splitTime = time.split(':');
+  const hours = parseInt(splitTime[0]);
+  const minutes = parseInt(splitTime[1]);
+  const minutesInThisDay = hours * 60 + minutes;
+  console.log(minutesInThisDay);
+  const onScaleOf100 = (minutesInThisDay / minutesIn24Hours) * 100;
+  console.log(onScaleOf100);
 }
 
 const months = [
