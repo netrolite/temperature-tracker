@@ -25,6 +25,15 @@ const data = [
       },
     ],
   },
+  {
+    date: new Date('Feb 12, 2012'),
+    temperatures: [
+      {
+        time: '23:55',
+        value: 36.4,
+      },
+    ],
+  },
 ];
 
 export default data;

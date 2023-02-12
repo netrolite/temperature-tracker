@@ -54,6 +54,7 @@ function findTimeOnScaleOf1To100(time) {
   console.log(minutesInThisDay);
   const onScaleOf100 = (minutesInThisDay / minutesIn24Hours) * 100;
   console.log(onScaleOf100);
+  if (onScaleOf100 > 100) throw new Error('Wrong time');
 }
 
 const months = [
