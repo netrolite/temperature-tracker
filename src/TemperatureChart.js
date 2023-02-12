@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef, useEffect, useState } from 'react';
 
-const barWidth = 20;
+const barWidth = 10;
 
 export default function TemperatureChart({ day }) {
   const canvasRef = useRef(null);
@@ -30,8 +30,10 @@ export default function TemperatureChart({ day }) {
       const value = temperature.value;
 
       const barX = findBarX(time, canvas);
-      const barY = findBarY(value, canvas);
-      console.log(barX, barY);
+      const barHeight = findBarHeight(value, canvas);
+      console.log(barX, barHeight);
+
+      ctx.fillRect(barX, 50, barWidth, barHeight);
     });
   }, []);
 
@@ -54,7 +56,7 @@ function findBarX(time, canvas) {
   return onScaleOfCanvasWidth;
 }
 
-function findBarY(temperature, canvas) {
+function findBarHeight(temperature, canvas) {
   const canvasHeight = canvas.height;
   const min = 35;
   const max = 42;

@@ -10,6 +10,10 @@ const data = [
         time: '11:30',
         value: 36.9,
       },
+      {
+        time: '02:00',
+        value: 42,
+      },
     ],
   },
   {
@@ -33,9 +37,9 @@ const data = [
         value: 36.4,
       },
       {
-        time: "22:20",
-        value: 41.99999
-      }
+        time: '22:20',
+        value: 41.99999,
+      },
     ],
   },
 ];
