@@ -15,9 +15,11 @@ export default function TemperatureChart({ day }) {
     ctx.lineTo(canvas.width, 30);
     ctx.stroke();
 
-    ctx.font = "16px";
-    const date = new Date();
-    const formattedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+    const date = day.date;
+    const formattedDate = `${
+      months[date.getMonth()]
+    } ${date.getDate()}, ${date.getFullYear()}`;
+    ctx.font = '15px Roboto';
     ctx.fillText(formattedDate, 15, 20);
   }, []);
 
@@ -32,16 +34,16 @@ function fitToContainer(canvas) {
 }
 
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "Novermber",
-  "December"
-]
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'Novermber',
+  'December',
+];
