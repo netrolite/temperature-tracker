@@ -7,5 +7,11 @@ export default function App() {
   const canvas = data.map((temperatureData, i) => {
     return <TemperatureChart temperatureData={temperatureData} key={i} />;
   });
-  return <div>{canvas}</div>;
+  
+  return (
+    <div>
+      <h1>hello</h1>
+      {canvas}
+    </div>
+  );
 }
