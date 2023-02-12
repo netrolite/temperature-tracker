@@ -6,9 +6,10 @@ export default function TemperatureChart({ temperatureData }) {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    fitToContainer(canvas);
     const ctx = canvas.getContext('2d');
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    fitToContainer(canvas);
+    
+    
   }, []);
 
   return <canvas ref={canvasRef}></canvas>;
