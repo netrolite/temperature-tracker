@@ -10,10 +10,15 @@ export default function TemperatureChart({ day }) {
     const ctx = canvas.getContext('2d');
     fitToContainer(canvas);
 
-    ctx.strokeStyle = 'darkgray';
+    ctx.strokeStyle = '#575757';
     ctx.moveTo(0, 30);
     ctx.lineTo(canvas.width, 30);
     ctx.stroke();
+
+    ctx.font = "16px";
+    const date = new Date();
+    const formattedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+    ctx.fillText(formattedDate, 15, 20);
   }, []);
 
   return <canvas ref={canvasRef}></canvas>;
@@ -25,3 +30,18 @@ function fitToContainer(canvas) {
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
 }
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "Novermber",
+  "December"
+]
