@@ -3,7 +3,6 @@ import { useRef, useEffect, useState } from 'react';
 
 export default function TemperatureChart({ day }) {
   const canvasRef = useRef(null);
-  console.log(day, 'day');
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,6 +20,17 @@ export default function TemperatureChart({ day }) {
     } ${date.getDate()}, ${date.getFullYear()}`;
     ctx.font = '15px Roboto';
     ctx.fillText(formattedDate, 15, 20);
+
+    const temperatures = day.temperatures;
+
+    temperatures.forEach((temperature) => {
+      const time = temperature.time;
+      const value = temperature.value;
+      console.log(time);
+      console.log(value);
+
+      const timeOnScaleOf0To100 = findTimeOnScaleOf1To100(time);
+    });
   }, []);
 
   return <canvas ref={canvasRef}></canvas>;
@@ -31,6 +41,10 @@ function fitToContainer(canvas) {
   canvas.style.height = '100%';
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
+}
+
+function findTimeOnScaleOf1To100(time) {
+  const minutesInADay = 60 * 24;
 }
 
 const months = [

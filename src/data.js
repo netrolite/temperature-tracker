@@ -4,11 +4,11 @@ const data = [
     temperatures: [
       {
         time: '10:30',
-        temperature: 36.6,
+        value: 36.6,
       },
       {
         time: '11:30',
-        temperature: 36.9,
+        value: 36.9,
       },
     ],
   },
@@ -17,11 +17,11 @@ const data = [
     temperatures: [
       {
         time: '12:45',
-        temperature: 37.0,
+        value: 37.0,
       },
       {
         time: '18:20',
-        temperature: 35.9,
+        value: 35.9,
       },
     ],
   },
