@@ -1,15 +1,19 @@
 import React from 'react';
 import { useRef, useEffect, useState } from 'react';
 
-export default function TemperatureChart({ temperatureData }) {
+export default function TemperatureChart({ day }) {
   const canvasRef = useRef(null);
+  console.log(day, 'day');
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     fitToContainer(canvas);
-    
-    
+
+    ctx.strokeStyle = 'darkgray';
+    ctx.moveTo(0, 30);
+    ctx.lineTo(canvas.width, 30);
+    ctx.stroke();
   }, []);
 
   return <canvas ref={canvasRef}></canvas>;
