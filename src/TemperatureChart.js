@@ -29,17 +29,18 @@ export default function TemperatureChart({ day }) {
       const time = temperature.time;
       const value = temperature.value;
 
-      const timeOnScaleOf0To100 = findTimeOnScaleOfCanvasWidth(time, canvas);
-      const barHeight = findBarHeight(value);
+      const barX = findBarX(time, canvas);
+      const barY = findBarY(value, canvas);
+      console.log(barX, barY);
     });
   }, []);
 
   return <canvas ref={canvasRef}></canvas>;
 }
 
-function findTimeOnScaleOfCanvasWidth(time, canvas) {
+function findBarX(time, canvas) {
   const minutesIn24Hours = 60 * 24;
-  const width = canvas.width;
+  const canvasWidth = canvas.width;
 
   const splitTime = time.split(':');
   const hours = parseInt(splitTime[0]);
@@ -49,18 +50,26 @@ function findTimeOnScaleOfCanvasWidth(time, canvas) {
   if (onScaleOf100 > 100) throw new Error('Wrong time. Over 24 hours');
 
   const multiplicand = onScaleOf100 / 100;
-  const onScaleOfCanvasWidth = (width - barWidth) * multiplicand;
+  const onScaleOfCanvasWidth = (canvasWidth - barWidth) * multiplicand;
   return onScaleOfCanvasWidth;
 }
 
-function findBarHeight(temperature) {
+function findBarY(temperature, canvas) {
+  const canvasHeight = canvas.height;
   const min = 35;
   const max = 42;
   const range = 42 - 35;
-  
+
   if (temperature < min || temperature > max) {
-    throw new RangeError("Temperature out of range");
+    throw new RangeError('Temperature out of range');
   }
+
+  const diff = max - temperature;
+  const height = range - diff;
+  const heightOnScaleOf100 = (height / range) * 100;
+  const multiplicand = heightOnScaleOf100 / 100;
+  const onScaleOfCanvasHeight = canvasHeight * multiplicand;
+  return onScaleOfCanvasHeight;
 }
 
 function fitToContainer(canvas) {

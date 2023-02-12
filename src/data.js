@@ -34,7 +34,7 @@ const data = [
       },
       {
         time: "22:20",
-        value: 42
+        value: 41.99999
       }
     ],
   },
