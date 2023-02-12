@@ -4,8 +4,9 @@ import data from './data.js';
 import TemperatureChart from './TemperatureChart';
 
 export default function App() {
-  const canvas = <TemperatureChart />;
-
+  const canvas = data.map((temperatureData, i) => {
+    return <TemperatureChart temperatureData={temperatureData} key={i} />;
+  });
   return (
     <div>
       {canvas}
