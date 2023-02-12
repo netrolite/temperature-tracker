@@ -57,7 +57,10 @@ function findBarHeight(temperature) {
   const min = 35;
   const max = 42;
   const range = 42 - 35;
-  console.log(range);
+  
+  if (temperature < min || temperature > max) {
+    throw new RangeError("Temperature out of range");
+  }
 }
 
 function fitToContainer(canvas) {
