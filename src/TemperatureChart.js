@@ -28,22 +28,13 @@ export default function TemperatureChart({ day }) {
     temperatures.forEach((temperature) => {
       const time = temperature.time;
       const value = temperature.value;
-      // console.log(time);
-      // console.log(value);
 
       const timeOnScaleOf0To100 = findTimeOnScaleOfCanvasWidth(time, canvas);
-      // console.log(timeOnScaleOf0To100);
+      const barHeight = findBarHeight(value);
     });
   }, []);
 
   return <canvas ref={canvasRef}></canvas>;
-}
-
-function fitToContainer(canvas) {
-  canvas.style.width = '100%';
-  canvas.style.height = '100%';
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
 }
 
 function findTimeOnScaleOfCanvasWidth(time, canvas) {
@@ -59,7 +50,21 @@ function findTimeOnScaleOfCanvasWidth(time, canvas) {
 
   const multiplicand = onScaleOf100 / 100;
   const onScaleOfCanvasWidth = (width - barWidth) * multiplicand;
-  console.log(onScaleOfCanvasWidth);
+  return onScaleOfCanvasWidth;
+}
+
+function findBarHeight(temperature) {
+  const min = 35;
+  const max = 42;
+  const range = 42 - 35;
+  console.log(range);
+}
+
+function fitToContainer(canvas) {
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
 }
 
 const months = [
