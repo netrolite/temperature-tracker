@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef, useEffect, useState } from 'react';
 
-const barWidth = 2;
+const barWidth = 5;
 
 export default function TemperatureChart({ day }) {
   const canvasRef = useRef(null);
