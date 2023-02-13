@@ -7,13 +7,17 @@ const data = [
         value: 38.6,
       },
       {
-        time: '11:30',
-        value: 36.9,
+        time: '20:30',
+        value: 39.0,
       },
       {
-        time: '02:00',
-        value: 42,
+        time: '21:30',
+        value: 39.4,
       },
+      {
+        time: '22:15',
+        value: 38.3
+      }
     ],
   },
   {
