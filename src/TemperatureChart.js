@@ -31,9 +31,10 @@ export default function TemperatureChart({ day }) {
 
       const barX = findBarX(time, canvas);
       const barHeight = findBarHeight(value, canvas);
+      const barY = canvas.height - barHeight;
       console.log(barX, barHeight);
 
-      ctx.fillRect(barX, 50, barWidth, barHeight);
+      ctx.fillRect(barX, barY, barWidth, barHeight);
     });
   }, []);
 

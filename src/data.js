@@ -3,8 +3,8 @@ const data = [
     date: new Date('Feb 10, 2023'),
     temperatures: [
       {
-        time: '10:30',
-        value: 36.6,
+        time: '18:50',
+        value: 38.6,
       },
       {
         time: '11:30',
