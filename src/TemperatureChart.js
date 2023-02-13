@@ -11,20 +11,7 @@ export default function TemperatureChart({ day }) {
     const ctx = canvas.getContext('2d');
     fitToContainer(canvas);
 
-    ctx.strokeStyle = '#575757';
-    ctx.moveTo(0, 30);
-    ctx.lineTo(canvas.width, 30);
-    ctx.stroke();
-
-    const date = day.date;
-    const formattedDate = `${
-      months[date.getMonth()]
-    } ${date.getDate()}, ${date.getFullYear()}`;
-    ctx.font = '15px Roboto';
-    ctx.fillText(formattedDate, 15, 20);
-
     const temperatures = day.temperatures;
-
     temperatures.forEach((temperature) => {
       const time = temperature.time;
       const value = temperature.value;
