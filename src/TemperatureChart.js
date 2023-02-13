@@ -25,7 +25,16 @@ export default function TemperatureChart({ day }) {
     });
   }, []);
 
-  return <canvas ref={canvasRef}></canvas>;
+  const date = day.date;
+  const formattedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+
+
+  return (
+    <div className="chart">
+      <div className="chart-header">{formattedDate}</div>
+      <canvas className="chart-canvas" ref={canvasRef}></canvas>
+    </div>
+  )
 }
 
 function findBarX(time, canvas) {
