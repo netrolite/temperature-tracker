@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef, useEffect, useState } from 'react';
 
-const barWidth = 10;
+const barWidth = 2;
 
 export default function TemperatureChart({ day }) {
   const canvasRef = useRef(null);
@@ -10,6 +10,7 @@ export default function TemperatureChart({ day }) {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     fitToContainer(canvas);
+    ctx.fillStyle = "orange"
 
     const temperatures = day.temperatures;
     temperatures.forEach((temperature) => {
@@ -19,7 +20,6 @@ export default function TemperatureChart({ day }) {
       const barX = findBarX(time, canvas);
       const barHeight = findBarHeight(value, canvas);
       const barY = canvas.height - barHeight;
-      console.log(barX, barHeight);
 
       ctx.fillRect(barX, barY, barWidth, barHeight);
     });
