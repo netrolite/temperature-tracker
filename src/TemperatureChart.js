@@ -12,8 +12,7 @@ export default function TemperatureChart({ day }) {
     fitToContainer(canvas);
     ctx.fillStyle = "orange"
 
-    const temperatures = day.temperatures;
-    temperatures.forEach((temperature) => {
+    day.temperatures.forEach((temperature) => {
       const time = temperature.time;
       const value = temperature.value;
 
